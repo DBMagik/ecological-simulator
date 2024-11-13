@@ -9,16 +9,19 @@ params <- list(
 
 time_span <- seq(0, 160, by = 1)
 
+library(deSolve)
+
 
 disease_spread_model <- function(time, state, parameters) {
   with(as.list(c(state, parameters)), {
     N <- S + I + R
-    dS_dt <- -beta * S * I / N
-    dI_dt <- beta * S * I / N - gamma * I
-    dR_dt <- gamma * I
+    dS_dt <- -parameters$beta * S * I / N
+    dI_dt <- parameters$beta * S * I / N - parameters$gamma * I
+    dR_dt <- parameters$gamma * I
     list(c(dS_dt, dI_dt, dR_dt))
   })
 }
+
 
 simulate_disease_spread <- function(params, time_span) {
   library(deSolve)
