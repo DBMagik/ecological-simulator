@@ -3,7 +3,7 @@ library(deSolve)
 library(ggplot2)
 library(reshape2)
 
-# Parameters for the Predator-Prey Model
+# Parameters for the Predator Prey Model ued in testing
 params <- list(
   prey_birth_rate = 1.0,
   predation_rate = 0.1,

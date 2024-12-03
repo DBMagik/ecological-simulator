@@ -1,4 +1,4 @@
-# Parameters for the Disease Spread Model
+# Parameters for the Disease Spread Model used in tesin
 params <- list(
   infection_rate = 0.3,
   recovery_rate = 0.1,

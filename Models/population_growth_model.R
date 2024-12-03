@@ -1,7 +1,7 @@
 library(ggplot2)
 library(deSolve)
 
-# Parameters for the Population Growth Model
+# Parameters for the Population Growth Model used in testing
 params <- list(
   growth_rate = 0.1,
   carrying_capacity = 1000,
