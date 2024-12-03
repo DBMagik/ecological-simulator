@@ -21,12 +21,11 @@ disease_spread_model <- function(time, state, parameters) {
   with(as.list(c(state, parameters)), {
     N <- S + I + R
     dS_dt <- -beta * S * I / N
-    dI_dt <- beta * S * I / N - gamma * I - delta * I  # delta represents the death rate
+    dI_dt <- beta * S * I / N - gamma * I
     dR_dt <- gamma * I
     list(c(dS_dt, dI_dt, dR_dt))
   })
 }
-
 
 # Simulation Function
 simulate_disease_spread <- function(params, time_span) {
@@ -34,12 +33,10 @@ simulate_disease_spread <- function(params, time_span) {
              I = params$initial_infected,
              R = params$initial_recovered)
   parameters <- list(beta = params$infection_rate,
-                     gamma = params$recovery_rate,
-                     delta = params$death_rate)  # New parameter
+                     gamma = params$recovery_rate)
   out <- ode(y = state, times = time_span, func = disease_spread_model, parms = parameters)
   as.data.frame(out)
 }
-
 
 # Plotting Function
 plot_disease_spread <- function(simulation_results) {
